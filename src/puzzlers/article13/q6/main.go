@@ -23,7 +23,7 @@ func (p *Gopher) debug() {
 }
 
 /**
-q5 main.go 中 前面说过，不管接收者类型是值类型还是指针类型，都可以通过值类型或指针类型调用，这里面实际上通过语法糖起作用的。
+q5 index.go 中 前面说过，不管接收者类型是值类型还是指针类型，都可以通过值类型或指针类型调用，这里面实际上通过语法糖起作用的。
 
 
 先说结论：
@@ -58,7 +58,7 @@ func main() {
 	//c.debug()
 
 
-	var c coder = Gopher{"Go"} // ./main.go:41:6: cannot use Gopher literal (type Gopher) as type coder in assignment:
+	var c coder = Gopher{"Go"} // ./index.go:41:6: cannot use Gopher literal (type Gopher) as type coder in assignment:
 	c.code()
 	c.debug()
 

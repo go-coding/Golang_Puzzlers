@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"sync"
 	"sync/atomic"
@@ -9,6 +10,8 @@ import (
 
 func main() {
 	coordinateWithWaitGroup()
+	fmt.Println()
+	coordinateWithContext()
 }
 
 func coordinateWithWaitGroup() {
@@ -28,6 +31,22 @@ func coordinateWithWaitGroup() {
 		}
 		wg.Wait()
 	}
+	fmt.Println("End.")
+}
+
+func coordinateWithContext() {
+	total := 12
+	var num int32
+	fmt.Printf("The number: %d [with context.Context]\n", num)
+	cxt, cancelFunc := context.WithCancel(context.Background())
+	for i := 1; i <= total; i++ {
+		go addNum(&num, i, func() {
+			if atomic.LoadInt32(&num) == int32(total) {
+				cancelFunc()
+			}
+		})
+	}
+	<-cxt.Done()
 	fmt.Println("End.")
 }
 
