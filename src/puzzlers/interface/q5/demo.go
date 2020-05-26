@@ -19,7 +19,7 @@ func main() {
 
 	var4 := new(int32)
 	fmt.Printf("%T->%v\n", var4, var4)
-	// src/puzzlers/article14/q5/demo.go:22:16: cannot convert var4 (type *int32) to type int32
+	// src/puzzlers/interface/q5/demo.go:22:16: cannot convert var4 (type *int32) to type int32
 	//var5 := *int32(var4)
 	//fmt.Printf("%T->%v\n", var5, var5)
 
